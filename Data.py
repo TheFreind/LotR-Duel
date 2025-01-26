@@ -30,33 +30,39 @@ oneRingQuest = {
 # A sophisticated function in Main will scan and update attributes if there is a difference.
 cardsRawData = {
     "Gimli" : {
+        "chapter" : 1,
         "color" : "Green",
-        "costs" : [0, 0, 0, 0, 1, 0],
+        "requirements" : [0, 0, 0, 0, 1, 0],
         "allianceSymbol" : "Dwarf",
         "chainBanner" : "Anvil",
     }, 
     "Naz'gul" : {
+        "chapter" : 1,
         "color" : "Gray",
         "addSkills" : ["Ruse", 1]
     },
     "Riches" : {
+        "chapter" : 1,
         "color" : "Yellow",
         "earnGold" : 2
     },
     "Gondor Warband" : {
+        "chapter" : 1,
         "color" : "Red",
         "deploySoldiers" : [1, ["Enedwaith","Rhovanion"] ],
         "chainBanner" : "Helmet",
     },
     "Smeagol's Escape" : {
+        "chapter" : 1,
         "color" : "Blue",
-        "costs" : [0, 0, 1, 0, 0, 0],
+        "requirements" : [0, 0, 1, 0, 0, 0],
         "ringTravels" : 1,
         "chainBanner" : "Horse",
     },
 }
 
-print(cardsRawData)
-for cardName in cardsRawData:
-    print(cardName)
-    print("Effects: ", cardsRawData[cardName])
+# DEBUGGING. TEST IF LIST IS WORKING
+#print(cardsRawData)
+#for cardName in cardsRawData:
+#    print(cardName)
+#    print("Effects: ", cardsRawData[cardName])

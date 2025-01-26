@@ -24,10 +24,57 @@ oneRingQuest = {
 
 
 #LANDMARKS DIRECTORY
+# Landmarks is meant to be a child of the Cards class.
+landmarksRawData = {
+    "Gray Havens" : {
+        "Fortress" : "Lindon",
+        "requirements" : [0, 0, 0, 3, 2, 1],
+        "specialAbility" : "GrayHavenTakeAllianceTokens",
+    },
+    "Bree" : {
+        "Fortress" : "Arnor",
+        "requirements" : [0, 0, 2, 3, 1, 0],
+        "deploySoldiers" : [2, ["Arnor"] ],
+        "Movements" : 2
+    },
+    "Erebor" : {
+        "Fortress" : "Rhovanion",
+        "requirements" : [0, 1, 1, 2, 1, 1],
+        "earnGold" : 5,
+        "Movements" : 1
+    },
+    "Isengard" : {
+        "Fortress" : "Enedwaith",
+        "requirements" : [0, 2, 3, 0, 0, 1],
+        "specialAbility" : "IsengardDiscardSkillCard",
+        "ringTravels" : 1,
+    },
+    "Helm's Deep" : {
+        "Fortress" : "Rohan",
+        "requirements" : [0, 3, 0, 0, 2, 1],
+        "deploySoldiers" : [3, ["Rohan"] ],
+    },    
+    "Minas Tirith" : {
+        "Fortress" : "Gondor",
+        "requirements" : [0, 3, 0, 1, 0, 2],  # Figure out how to calculate gold cost. Hm. Maybe in Main on "Purchase function".
+        "deploySoldiers" : [1, ["Gondor"] ],
+        "ringTravels" : 2,
+    },
+    "Barad-Dur" : {
+        "Fortress" : "Mordor",
+        "requirements" : [0, 0, 3, 0, 2, 1],
+        "specialAbility" : "DiscardReclaim",
+    },
+
+    # The Shire
+
+    # GROND!!!!
+}
 
 #CARDS DIRECTORY
 # Class Card's __init__ does the heavy lifting here. Assume all values 0 or empty, unless said otherwise.
 # A sophisticated function in Main will scan and update attributes if there is a difference.
+#   -- Requirements = [Gold, Ruse, Courage, Strength, Leadership, Knowledge]
 cardsRawData = {
     "Gimli" : {
         "chapter" : 1,
@@ -39,7 +86,9 @@ cardsRawData = {
     "Naz'gul" : {
         "chapter" : 1,
         "color" : "Gray",
-        "addSkills" : ["Ruse", 1]
+        "addSkills" : {
+            "Ruse" : 1
+        }
     },
     "Riches" : {
         "chapter" : 1,

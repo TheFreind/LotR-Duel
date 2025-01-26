@@ -113,4 +113,17 @@ class Landmark(Card):
 # Rewards. Each reward is handed out in a seperate function.
 #    -- Also important because Alliance Faction bonuses need to check individual elements.
 
+class Player():
+    def __init__(self, chosenName, faction):
+        if faction == "The Fellowship":
+            self.faction == "Fellowship"
+        elif faction == "Sauron":
+            self.faction == "Sauron"
+
+        if chosenName:
+            self.name = chosenName
+        else:
+            self.name = self.faction
+        
+
 

@@ -12,7 +12,7 @@ class Card():
         #Basic Info
         self.name = name
         self.color = ""
-        self.chapter = ""
+        self.chapter = 0
 
         #Costs 
         self.chainRequirement = ""
@@ -90,6 +90,9 @@ class Card():
 
         print("\n")#
 
+    def __repr__(self):
+        return "{} | {}".format(self.name, self.color)
+
 
 
 
@@ -105,6 +108,9 @@ class Landmark(Card):
 
         super().__init__(dataArray, name) # Inherit all Card __init__
 
+    def __repr__(self):
+        return "{} | {}".format(self.name, self.fortressLocation)
+
 
 # Name == What I think card looks like
 # Color/type
@@ -115,15 +121,29 @@ class Landmark(Card):
 
 class Player():
     def __init__(self, chosenName, faction):
-        if faction == "The Fellowship":
-            self.faction == "Fellowship"
-        elif faction == "Sauron":
-            self.faction == "Sauron"
+        self.cardsOwned = []
+        self.goldOwned = 0
+
+
+        if faction == "F":
+            self.faction = "Fellowship"
+        elif faction == "S":
+            self.faction = "Sauron"
 
         if chosenName:
             self.name = chosenName
         else:
             self.name = self.faction
+
+
+    def earnGold(self, amount):
+        self.goldOwned += amount
+
+    def loseGold(self, amount):
+        self.goldOwned -= amount
+        if self.goldOwned < 0:
+            self.goldOwned = 0
+
         
 
 

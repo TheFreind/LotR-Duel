@@ -22,6 +22,15 @@ oneRingQuest = {
     "Bonuses" : [ [False,False,False,False] , [False,False,False,False] ]
 }
 
+# FACTION / ALLIANCE TOKENS
+factionTokens = {
+    "Dwarf":    ["IgnoreLandmarkCoinCost", "LandmarkRefreshTurn", "GreenMovements"],
+    "Elf":      ["YellowRefreshTurn", "RedGlobalDeploy", "ElfSkillWildcard"],
+    "Human":    ["YellowAdvanceRing", "RedAdditionalTroop", "DiscardDoubleValue"],
+    "Hobbit":   ["HobbitEagles", "BlueGlobalOneTroop", "ChainBonusGold"],
+    "Wizard":   ["WizardAdvanceRing", "WizardDeployTroops", "WizardDiscardReclaim"],
+    "Ent":      ["EntRefreshTurn", "RemoveFortress", "EntRemoveSabotageMovement"]
+}
 
 #LANDMARKS DIRECTORY
 # Landmarks is meant to be a child of the Cards class.
@@ -76,12 +85,35 @@ landmarksRawData = {
 # A sophisticated function in Main will scan and update attributes if there is a difference.
 #   -- Requirements = [Gold, Ruse, Courage, Strength, Leadership, Knowledge]
 cardsRawData = {
+
+### // CHAPTER 1 // ###
     "Gimli" : {
         "chapter" : 1,
         "color" : "Green",
         "requirements" : [0, 0, 0, 0, 1, 0],
         "allianceSymbol" : "Dwarf",
-        "chainBanner" : "Anvil",
+        "chainBanner" : "Dwarven Craftsmanship",
+    }, 
+    "Frodo and Sam" : {
+        "chapter" : 1,
+        "color" : "Green",
+        "requirements" : [0, 0, 0, 0, 1, 0],
+        "allianceSymbol" : "Hobbit",
+        "chainBanner" : "Second Breakfast",
+    }, 
+    "Aragorn, son of Arathorn" : {
+        "chapter" : 1,
+        "color" : "Green",
+        "requirements" : [0, 0, 0, 0, 0, 1],
+        "allianceSymbol" : "Human",
+        "chainBanner" : "Shadowfax",
+    }, 
+    "Legolas" : {
+        "chapter" : 1,
+        "color" : "Green",
+        "requirements" : [0, 0, 0, 0, 0, 1],
+        "allianceSymbol" : "Elf",
+        "chainBanner" : "Elven Grace",
     }, 
     "Naz'gul" : {
         "chapter" : 1,
@@ -90,7 +122,71 @@ cardsRawData = {
             "Ruse" : 1
         }
     },
-    "Riches" : {
+    "Furtive Halflings" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Ruse" : 1
+        }
+    },
+    "Travel the Marsh" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Courage" : 1
+        }
+    },
+    "Travel through Moria" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Courage" : 1
+        }
+    },
+    "Forge Weapons" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Strength" : 1
+        }
+    },
+    "Prepare Aramaments" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Strength" : 1
+        }
+    },
+    "Claim Birthright" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Leadership" : 1
+        }
+    },
+    "History of Middle-Earth" : {
+        "chapter" : 1,
+        "color" : "Gray",
+        "addSkills" : {
+            "Knowledge" : 1
+        }
+    },
+    "Collect Taxes" : {
+        "chapter" : 1,
+        "color" : "Yellow",
+        "earnGold" : 2
+    },
+    "Exploit the Land" : {
+        "chapter" : 1,
+        "color" : "Yellow",
+        "earnGold" : 2
+    },
+    "Inherit Wealth" : {
+        "chapter" : 1,
+        "color" : "Yellow",
+        "earnGold" : 2
+    },
+    "Share Belongings" : {
         "chapter" : 1,
         "color" : "Yellow",
         "earnGold" : 2
@@ -99,19 +195,71 @@ cardsRawData = {
         "chapter" : 1,
         "color" : "Red",
         "deploySoldiers" : [1, ["Enedwaith","Rhovanion"] ],
-        "chainBanner" : "Helmet",
+        "chainBanner" : "Helmet", 
+    },
+    "Fight in the Mines" : {
+        "chapter" : 1,
+        "color" : "Red",
+        "deploySoldiers" : [1, ["Lindon","Arnor"] ],
+        "chainBanner" : "Andúril", # Aragorn's Sword
+    },
+    "Sneak Attack" : {
+        "chapter" : 1,
+        "color" : "Red",
+        "requirements" : [0, 1, 0, 0, 0, 0],
+        "deploySoldiers" : [1, ["Gondor","Rohan"] ],
+        "chainBanner" : "Bow of the Galadhrim", # Legolas's bow is gifted by Galadriel
     },
     "Smeagol's Escape" : {
         "chapter" : 1,
         "color" : "Blue",
+        "requirements" : [0, 0, 0, 1, 0, 0],
+        "ringTravels" : 1,
+        "chainBanner" : "Bill, the Pony",
+    },
+    "Underlying Envy" : {
+        "chapter" : 1,
+        "color" : "Blue",
+        "ringTravels" : 1,
+    },
+    "Insatiable Hunger" : {
+        "chapter" : 1,
+        "color" : "Blue",
+        "requirements" : [1, 0, 0, 0, 0, 0],
+        "ringTravels" : 1,
+        "chainBanner" : "Raw Fish",
+    },
+    "Follow the Hobitses" : {
+        "chapter" : 1,
+        "color" : "Blue",
         "requirements" : [0, 0, 1, 0, 0, 0],
         "ringTravels" : 1,
-        "chainBanner" : "Horse",
+        "chainBanner" : "Lembas Bread",
     },
-}
 
-# DEBUGGING. TEST IF LIST IS WORKING
-#print(cardsRawData)
-#for cardName in cardsRawData:
-#    print(cardName)
-#    print("Effects: ", cardsRawData[cardName])
+### // CHAPTER 2 // ###
+    "The Dwarves Go To War" : {
+        "chapter" : 2,
+        "color" : "Green",
+        "requirements" : [0, 0, 0, 2, 1, 0],
+        "allianceSymbol" : "Dwarf",
+        "chainRequirement" : "Dwarven Craftsmanship"
+    },
+    "Forgotten Vault" : {
+        "chapter" : 2,
+        "color" : "Yellow",
+        "earnGold" : 3,
+        "chainBanner" : "Keys to the Treasury"
+    },
+    "Defending Helm's Deep" : {
+        "chapter" : 2,
+        "color" : "Red",
+        "requirements" : [0, 0, 1, 2, 0, 0],
+        "chainRequirement" : "Helmet",
+        "deploySoldiers" : [2, ["Lindon","Enedwaith"] ],
+        "chainBanner" : "Mithril Armor", # Armor gifted to Frodo from Bilbo Baggins.
+    },
+
+### // CHAPTER 3 // ###
+
+}

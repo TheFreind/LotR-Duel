@@ -6,11 +6,57 @@ from Functions import *
   # Return it here & the setupCards function if there are problems.
 from Data import *
 
-deckOfCards = setupCards(cardsRawData, "Playing Card")
+
+
+# Setup Cards
+allCardsUnfiltered = setupCards(cardsRawData, "Playing Card")
+chapter1deck = []
+chapter2deck = []
+chapter3deck = []
+pickableCards = []
+discardDeck = []
+
+for card in allCardsUnfiltered:
+    if card.chapter == 1:
+        moveCards(allCardsUnfiltered, chapter1deck, 1)
+    elif card.chapter == 2:
+        moveCards(allCardsUnfiltered, chapter2deck, 1)
+    elif card.chapter == 3:
+        moveCards(allCardsUnfiltered, chapter2deck, 3)
+
+shuffle(chapter1deck)
+shuffle(chapter2deck)
+shuffle(chapter3deck)
+
+
+# Setup Landmarks
 deckOfLandmarks = setupCards(landmarksRawData, "Landmark")
+shuffle(deckOfLandmarks)
+pickableLandmarks = []
+moveCards(deckOfLandmarks, pickableLandmarks, 3)
+
+# Shuffle Alliance tokens
+for faction in factionTokens:
+    shuffle(factionTokens[faction])
 
 gameEnd = False
 startingPlayer = "Sauron" # Unnecessary imo
+
+print("Welcome to LotR: Duel for Middle-Earth.\n Please select a faction to play as:")
+solo_player_chooses = input("[F]ellowship, or [S]auron?\n").upper()
+awaitResponse("Choose Faction", solo_player_chooses)
+
+print("\nExcellent! Do you want a special name for yourself?")
+solo_player_name_bool = input("'[Y], I want a name'; or '[N], just label me as the faction'?\n").upper()
+awaitResponse("Y/N", solo_player_name_bool)
+
+if solo_player_name_bool == "Y":
+    solo_player_name = input("-- Please enter a name: \n")
+else:
+    solo_player_name = ""
+
+solo_player = Player(solo_player_name, solo_player_chooses)
+
 
 #while gameEnd == False:
 
@@ -22,8 +68,14 @@ startingPlayer = "Sauron" # Unnecessary imo
     Divide cards into chapters and shuffle decks individually.
 
     START OF CHAPTER
-    Assemble card structure depending on chapter
-    Draw up to 3 landmarks
+    # Assemble card structure depending on chapter
+    # Draw up to 3 landmarks
+    if CHAPTER = 1:
+    elif CHAPTER = 2:
+    elif CHAPTER = 3:
+    else:
+      Game ends. Do end-of-chapter-3 scoring (it's domination based)
+
 
     TURN
     A) Take a chapter Card
